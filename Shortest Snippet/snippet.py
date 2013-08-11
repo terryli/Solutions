@@ -1,9 +1,9 @@
 #!/usr/bin/python
 
 # ---------------
-# Given a list of any number of integers, and a search list of N integers,
+# Given a paragraph of any number of words, and a list of N search terms,
 # write an algorithm that will return the shortest snippet within the list
-# that contains all N integers in any order.
+# that contains all N terms in any order, case-insensitive.
 #
 # Difficulty: 5/5
 # ---------------
@@ -11,8 +11,11 @@
 import sys
 
 def main():
-    body = [1, 2, 4, 5, 7, 10, 2, 2, 5, 3, 10, 4, 6, 8, 8, 9, 2, 3, 1, 1, 5, 9]
-    args = [2, 3, 5]
+    body_str = "The George Washington Bridge in New York City is one of the oldest bridges ever constructed. It is now being remodeled because the bridge is a landmark. City officials say that the landmark bridge effort will create a lot of new jobs in the city"
+    args_str = "is a Landmark City Bridge"
+
+    body = body_str.split(" ")
+    args = args_str.split(" ")
 
     pos = 0
     table = {}
@@ -26,7 +29,7 @@ def main():
 
     for n in body:
         for i in args:
-            if (n == i):
+            if (n.lower() == i.lower()):
                 table[i].append(pos)
                 continue
         pos = pos + 1
